@@ -126,7 +126,6 @@ function App() {
       axios.post( `https://nurweather.pythonanywhere.com/api/v1/weather`,{'how_to_learn':how_to_search}).
       then((res)=>{
         console.log(res.data);
-        data = res.data;
         setWeatherData(res.data);
         setTimeout(() => {
           setLoading(false);
