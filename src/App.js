@@ -6,8 +6,6 @@ import {
   TbMoon,
   TbSearch,
   TbSun,
-  TbVolume,
-  TbVolumeOff,
 } from 'react-icons/tb';
 import DetailsCard from './components/DetailsCard';
 import SummaryCard from './components/SummaryCard';
@@ -21,7 +19,8 @@ import BackgroundImage from './components/BackgroundImage';
 import Animation from './components/Animation';
 
 import axios from 'axios';
-import {Card} from 'antd';
+import {Button} from 'antd';
+
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -45,7 +44,10 @@ function App() {
   );
   const [active, setActive] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [refreshing, setRereshing] = useState(false);
 
+
+  
   useEffect(() => {
     if (isDark) {
       document.body.classList.add('dark');
@@ -73,6 +75,7 @@ function App() {
   const toggleDark = () => {
     setIsDark((prev) => !prev);
   };
+  
 
   const activate = () => {
     setActive(true);
@@ -95,8 +98,8 @@ function App() {
     //   setSearchTerm(value);
     // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+   
     getWeather(searchTerm);
   };
 
@@ -113,12 +116,13 @@ function App() {
   };
 
   const getWeather = async (location) => {
+    console.log(location)
     setLoading(true);
     setWeatherData([]);
     let how_to_search =
       typeof location === 'string'
-        ? `q=${location}`
-        : `lat=${location[0]}&lon=${location[1]}`;
+        ? `q=${"Astana"}`
+        : `lat=${51.134464}&lon=${71.4309632}`;
 
 
     try {
@@ -127,6 +131,7 @@ function App() {
       then((res)=>{
         console.log(res.data);
         setWeatherData(res.data);
+
         setTimeout(() => {
           setLoading(false);
         }, 500);
@@ -157,6 +162,7 @@ function App() {
   };
 
   const myIP = (location) => {
+  
     const { latitude, longitude } = location.coords;
     getWeather([latitude, longitude]);
   };
@@ -205,6 +211,10 @@ function App() {
   window.addEventListener('load', function () {
     navigator.geolocation.getCurrentPosition(myIP);
   });
+  useEffect(()=>{handleSubmit()},[refreshing])
+
+
+
   return (
     <div className='container'>
       <div
@@ -276,41 +286,18 @@ function App() {
           
             <hr />
 
-            <form className='search-bar' noValidate onSubmit={handleSubmit}>
-              <input 
-                onClick={activate}
-                placeholder={active ? '' : 'Қаланың ауа райын зерттеңіз'}
-                onChange={(e)=>searchCountries(e.target.value)}
-                required
-                className="input_search"
-              />
-              <div className="list-dropdown">
-                {countryMatch && countryMatch.map((item,index)=>(
-                  <div>
-                    {/* eslint-disable-next-line no-template-curly-in-string */}
-                    <Card title={`Country: ${item}`}>
-                    </Card>
-                  </div>
-                ))} 
-              </div>
+         
 
-              <button className='s-icon'>
-                <TbSearch
-                  onClick={() => {
-                    navigator.geolocation.getCurrentPosition(myIP);
-                  }}
-                />
+              <button className='s-icon'  onClick={() => setBackgroundSoundEnabled(() => setRereshing(!refreshing))}>
+              Деректерді жаңарту
+        
               </button>
 
-            </form>
+         
 
-            <button
-              className='s-icon sound-toggler'
-              onClick={() => setBackgroundSoundEnabled((prev) => !prev)}
-            >
-              {backgroundSoundEnabled ? <TbVolume /> : <TbVolumeOff />}
-            </button>
+          
           </div>
+       
         </div>
         <div className='info-container'>
           <div className='info-inner-container'>

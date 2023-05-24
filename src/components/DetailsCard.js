@@ -13,13 +13,16 @@ function DetailsCard({
   isFahrenheitMode,
   degreeSymbol,
 }) {
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
   const { clouds, main, weather } = data.list[0];
   const { t } = useTranslation();
 
   const formattedData = useMemo(() => {
     return {
       temp: Math.round(
-        isFahrenheitMode ? convertToFahrenheit(main.temp) : main.temp
+        isFahrenheitMode ? convertToFahrenheit(main.temp) : main.temp + getRandomInt(5)
       ),
       feels_like: Math.round(
         isFahrenheitMode
@@ -27,10 +30,10 @@ function DetailsCard({
           : main.feels_like
       ),
       temp_min: Math.round(
-        isFahrenheitMode ? convertToFahrenheit(main.temp_min) : main.temp_min
+        isFahrenheitMode ? convertToFahrenheit(main.temp_min) : main.temp_min + getRandomInt(-4)
       ),
       temp_max: Math.round(
-        isFahrenheitMode ? convertToFahrenheit(main.temp_max) : main.temp_max
+        isFahrenheitMode ? convertToFahrenheit(main.temp_max) : main.temp_max + getRandomInt(4)
       ),
     };
   }, [
