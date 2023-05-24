@@ -15,6 +15,7 @@ import zh from './zh.json';
 import hnd from './hnd.json';
 import he from './he.json';
 import kk from './kk.json';
+import ru from './ru.json';
 
 
 i18n.use(initReactI18next).init({
@@ -22,6 +23,7 @@ i18n.use(initReactI18next).init({
   lng: 'kk',
   fallbackLng: 'kk',
   resources: {
+    ru: ru,
     en: en,
     sw: sw,
     es: es,

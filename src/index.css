@@ -195,6 +195,7 @@ body {
   justify-content: center;
   background: linear-gradient(106.23deg, #a4b7b1, #095f62 100%);
   border-radius: 5px;
+  width: 50px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   padding: 8px;
@@ -202,6 +203,7 @@ body {
   transition: all 0.5s ease;
 }
 .s-icon:hover {
+  width: 50px;
   cursor: pointer;
   background: linear-gradient(106.23deg, #226fae, #226fae 100%);
   transform: scale(1.05);

@@ -4,8 +4,9 @@ import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri';
 import {
   TbMapSearch,
   TbMoon,
-  TbSearch,
   TbSun,
+  TbVolume,
+  TbVolumeOff,
 } from 'react-icons/tb';
 import DetailsCard from './components/DetailsCard';
 import SummaryCard from './components/SummaryCard';
@@ -17,13 +18,12 @@ import SearchPlace from './asset/search.svg';
 import BackgroundColor from './components/BackgroundColor';
 import BackgroundImage from './components/BackgroundImage';
 import Animation from './components/Animation';
-
+import {UndoOutlined} from  '@ant-design/icons';
 import axios from 'axios';
-import {Button} from 'antd';
+
 
 
 function App() {
-  const API_KEY = process.env.REACT_APP_API_KEY;
   const { t, i18n } = useTranslation();
   const [noData, setNoData] = useState();
   const [searchTerm, setSearchTerm] = useState('');
@@ -272,7 +272,7 @@ function App() {
             </div>
             <div className='city'>
               <TbMapSearch />
-              <p>{city ?? t('unknown-location')}</p>
+              <p>{"Astana, KZ"}</p>
             </div>
           </div>
           <div className='search'>
@@ -287,14 +287,19 @@ function App() {
             <hr />
 
          
-
+     
               <button className='s-icon'  onClick={() => setBackgroundSoundEnabled(() => setRereshing(!refreshing))}>
-              Деректерді жаңарту
+              <UndoOutlined size={45} />
         
               </button>
 
          
-
+              <button
+              className='s-icon sound-toggler'
+              onClick={() => setBackgroundSoundEnabled((prev) => !prev)}
+            >
+              {backgroundSoundEnabled ? <TbVolume /> : <TbVolumeOff />}
+            </button>
           
           </div>
        
@@ -320,7 +325,7 @@ function App() {
               <option value='id'>{t('languages.id')}</option>
               <option value='it'>{t('languages.it')}</option>
               <option value='ta'>{t('languages.ta')}</option>
-              <option value='kk'>{t('languages.kk')}</option>
+              <option value='ru'>{t('languages.ru')}</option>
               <option value='bn'>{t('languages.bn')}</option>
               <option value='zh'>{t('languages.zh')}</option>
               <option value='ptBR'>{t('languages.ptBR')}</option>
@@ -382,7 +387,7 @@ function App() {
                     degreeSymbol={degreeSymbol}
                   />
                   <h1 className='title centerTextOnMobile'>
-                    {t('more-on')} {city ?? t('unknown-location')}
+                    {t('more-on')} {"Astana, KZ"}
                   </h1>
                   <ul className='summary'>
                     {weatherData.list.map((days, index) => (
