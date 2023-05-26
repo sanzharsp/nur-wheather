@@ -11,19 +11,22 @@ import {
 import DetailsCard from './components/DetailsCard';
 import SummaryCard from './components/SummaryCard';
 import './languages/i18n';
-
 import LakeBackground from './asset/lake-background.jpg';
 import Astronaut from './asset/not-found.svg';
 import SearchPlace from './asset/search.svg';
 import BackgroundColor from './components/BackgroundColor';
 import BackgroundImage from './components/BackgroundImage';
 import Animation from './components/Animation';
-import {UndoOutlined} from  '@ant-design/icons';
+import {UndoOutlined, AreaChartOutlined} from  '@ant-design/icons';
 import axios from 'axios';
+import Chart from './diagramm/diagramm'
+import { useNavigate } from "react-router-dom";
 
 
 
 function App() {
+
+  let navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [noData, setNoData] = useState();
   const [searchTerm, setSearchTerm] = useState('');
@@ -300,7 +303,13 @@ function App() {
             >
               {backgroundSoundEnabled ? <TbVolume /> : <TbVolumeOff />}
             </button>
-          
+           
+            <button
+              className='s-icon sound-toggler'
+              onClick={()=>{navigate("/charts", { replace: true });}}
+            >
+              <AreaChartOutlined />
+            </button>
           </div>
        
         </div>

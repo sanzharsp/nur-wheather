@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import "antd/dist/antd.css";
+import {BrowserRouter as Router} from "react-router-dom";
+import Routings from './routing/routing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>    
+    <Routings/> 
+    </Router>
   </React.StrictMode>
 );
 
