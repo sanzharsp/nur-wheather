@@ -46,7 +46,7 @@ const DemoPie = () => {
           overflow: 'hidden',
           textOverflow: 'ellipsis',
         },
-        content: 'Болжаудың қателік проценті',
+        content: 'Желінің қателік проценті',
       },
     },
   };
