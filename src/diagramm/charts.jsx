@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Pie } from '@ant-design/plots';
+import { Breadcrumb, Button } from 'antd';
 
 const DemoPie = () => {
   const data = [
@@ -50,7 +51,28 @@ const DemoPie = () => {
       },
     },
   };
-  return <Pie {...config} />;
+  return (
+  <>  
+  <Breadcrumb
+  items={[
+    {
+      title: 'Home',
+    },
+    {
+      title: <a href="">Application Center</a>,
+    },
+    {
+      title: <a href="">Application List</a>,
+    },
+    {
+      title: 'An Application',
+    },
+  ]}
+/>
+<Pie {...config} />
+</>
+
+  )
 };
 
 export default DemoPie;

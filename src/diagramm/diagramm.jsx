@@ -1,7 +1,6 @@
 import DemoPie from '../diagramm/charts'
 import { Card } from 'antd';
 import ReactDOM from 'react-dom';
-import { Area } from '@ant-design/plots';
 import React, { useState, useEffect } from 'react';
 import { DualAxes } from '@ant-design/plots';
 
@@ -104,8 +103,9 @@ const Chart = () => {
     ],
   }; 
   return (<Card>
+ 
   <DemoPie />
-  <Card title="Күндіз бен түнгі (2014-2023) температуранын отрша көрсеткіші" >
+  <Card title="Күндіз бен түнгі (2014-2023) температуранын орташа көрсеткіші" >
   <DualAxes  {...config} />
   </Card>
 
