@@ -46,7 +46,7 @@ const DemoPie = () => {
           overflow: 'hidden',
           textOverflow: 'ellipsis',
         },
-        content: 'Нейрондық желінің қателік проценті',
+        content: 'Болжаудың қателік проценті',
       },
     },
   };
