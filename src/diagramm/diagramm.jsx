@@ -3,9 +3,17 @@ import { Card } from 'antd';
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { DualAxes } from '@ant-design/plots';
+import {LeftOutlined } from  '@ant-design/icons';
+import Button from '@mui/material/Button';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+
 
 
 const Chart = () => {
+
+
   const data = [
     {
       year: '2014',
@@ -69,7 +77,7 @@ const Chart = () => {
         color: '#5B8FF9',
         label: {
           formatter: (datum) => {
-            return `${datum.night}个`;
+            return ${datum.night}个;
           },
         },
         lineStyle: {
@@ -87,7 +95,7 @@ const Chart = () => {
         },
         label: {
           formatter: (datum) => {
-            return `${datum.day}个`;
+            return ${datum.day}个;
           },
         },
         point: {
@@ -103,7 +111,32 @@ const Chart = () => {
     ],
   }; 
   return (<Card>
- 
+  
+  
+
+  
+        <Breadcrumbs aria-label="breadcrumb">
+   
+   <Link
+     underline="hover"
+     color="inherit"
+    
+   >    <a
+   href='https://nur-ai-weather.vercel.app/'
+  
+ >
+          <Button variant="contained"   >
+        <LeftOutlined />
+    
+          Артқа
+        
+        </Button>
+        </a>
+   </Link>
+   <Typography color="text.primary"> <Button variant="contained" >Деректер анализі    </Button></Typography>
+ </Breadcrumbs>
+       
+
   <DemoPie />
   <Card title="Күндіз бен түнгі (2014-2023) температуранын орташа көрсеткіші" >
   <DualAxes  {...config} />

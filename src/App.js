@@ -19,7 +19,6 @@ import BackgroundImage from './components/BackgroundImage';
 import Animation from './components/Animation';
 import {UndoOutlined, AreaChartOutlined} from  '@ant-design/icons';
 import axios from 'axios';
-import Chart from './diagramm/diagramm'
 import { useNavigate } from "react-router-dom";
 
 
